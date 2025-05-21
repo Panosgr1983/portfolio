@@ -1,0 +1,32 @@
+<section class="py-24 px-4">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="section-title">Τι Λένε οι Πελάτες</h2>
+      <p class="section-subtitle">
+        Η επιτυχία των πελατών μου είναι και δική μου επιτυχία
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8">
+      <div *ngFor="let testimonial of testimonials" class="bg-white p-8 rounded-xl shadow-lg relative">
+        <div class="absolute -top-5 left-1/2 transform -translate-x-1/2">
+          <div class="w-10 h-10 bg-indigo-500 rotate-45"></div>
+        </div>
+        <div class="pt-6">
+          <p class="text-gray-600 italic mb-6">"{{testimonial.content}}"</p>
+          <div class="flex items-center">
+            <img 
+              [src]="testimonial.image"
+              [alt]="testimonial.name"
+              class="w-12 h-12 rounded-full object-cover mr-4"
+            />
+            <div>
+              <h4 class="font-semibold">{{testimonial.name}}</h4>
+              <p class="text-gray-600 text-sm">{{testimonial.role}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

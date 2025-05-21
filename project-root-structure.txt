@@ -1,0 +1,76 @@
+/Users/panagiotischoliasmenos/portfolio-main
+├── aion-scan-project.sh
+├── angular.json
+├── app
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+├── components
+│   ├── ContactForm.tsx
+│   ├── Footer.tsx
+│   ├── PortfolioItem.tsx
+│   ├── ServiceCard.tsx
+│   └── TestimonialsSection.tsx
+├── eslint.config.js
+├── index.html
+├── netlify.toml
+├── next.config.js
+├── package-lock.json
+├── package.json
+├── postcss.config.cjs
+├── project-root-structure.txt
+├── public
+│   ├── index.html
+│   ├── manifest.json
+│   └── robots.txt
+├── README.md
+├── scripts
+│   ├── export-html.cjs
+│   └── export-html.js
+├── src
+│   ├── app
+│   │   ├── app.component.html
+│   │   ├── app.component.ts
+│   │   ├── app.module.ts
+│   │   └── components
+│   │       ├── contact-form
+│   │       │   ├── contact-form.component.html
+│   │       │   └── contact-form.component.ts
+│   │       ├── footer
+│   │       │   ├── footer.component.html
+│   │       │   └── footer.component.ts
+│   │       ├── portfolio-item
+│   │       │   ├── portfolio-item.component.html
+│   │       │   └── portfolio-item.component.ts
+│   │       ├── service-card
+│   │       │   ├── service-card.component.html
+│   │       │   └── service-card.component.ts
+│   │       └── testimonials-section
+│   │           ├── testimonials-section.component.html
+│   │           └── testimonials-section.component.ts
+│   ├── App.tsx
+│   ├── components
+│   │   ├── ContactForm.tsx
+│   │   ├── Footer.tsx
+│   │   ├── PortfolioItem.tsx
+│   │   ├── ServiceCard.tsx
+│   │   ├── TestEmailButton.tsx
+│   │   └── TestimonialsSection.tsx
+│   ├── index.css
+│   ├── index.html
+│   ├── index.tsx
+│   ├── main.tsx
+│   ├── react-app-env.d.ts
+│   ├── reportWebVitals.ts
+│   ├── styles.css
+│   ├── TestEmailButton.tsx
+│   ├── testEmailForm.js
+│   ├── testEmailForm.ts
+│   └── vite-env.d.ts
+├── tailwind.config.js
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
+
+14 directories, 60 files

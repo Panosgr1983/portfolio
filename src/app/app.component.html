@@ -1,0 +1,318 @@
+<div class="min-h-screen bg-white">
+  <!-- Navigation -->
+  <nav class="fixed w-full bg-white/90 backdrop-blur-sm z-50 border-b border-gray-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <span class="text-xl font-bold text-indigo-600">Παναγιώτης Χολιασμένος</span>
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center space-x-8">
+          <button 
+            (click)="scrollToSection(heroSection)" 
+            [class.text-indigo-600]="activeSection === 'home'"
+            class="hover:text-indigo-600 transition-colors"
+          >
+            Αρχική
+          </button>
+          <button 
+            (click)="scrollToSection(aboutSection)" 
+            [class.text-indigo-600]="activeSection === 'about'"
+            class="hover:text-indigo-600 transition-colors"
+          >
+            Σχετικά
+          </button>
+          <button 
+            (click)="scrollToSection(servicesSection)" 
+            [class.text-indigo-600]="activeSection === 'services'"
+            class="hover:text-indigo-600 transition-colors"
+          >
+            Υπηρεσίες
+          </button>
+          <button 
+            (click)="scrollToSection(portfolioSection)" 
+            [class.text-indigo-600]="activeSection === 'portfolio'"
+            class="hover:text-indigo-600 transition-colors"
+          >
+            Portfolio
+          </button>
+          <button 
+            (click)="scrollToSection(contactSection)" 
+            class="btn-primary"
+          >
+            Επικοινωνία
+          </button>
+        </div>
+
+        <!-- Mobile menu button -->
+        <div class="md:hidden flex items-center">
+          <button
+            (click)="isMenuOpen = !isMenuOpen"
+            class="text-gray-700"
+          >
+            <i-lucide name="{{ isMenuOpen ? 'x' : 'menu' }}" class="h-6 w-6"></i-lucide>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div *ngIf="isMenuOpen" class="md:hidden absolute w-full bg-white border-b border-gray-100 shadow-lg">
+      <div class="px-4 pt-2 pb-3 space-y-3">
+        <button 
+          (click)="scrollToSection(heroSection)" 
+          class="block w-full text-left px-3 py-2 text-gray-700 hover:bg-indigo-50 rounded-lg"
+        >
+          Αρχική
+        </button>
+        <button 
+          (click)="scrollToSection(aboutSection)" 
+          class="block w-full text-left px-3 py-2 text-gray-700 hover:bg-indigo-50 rounded-lg"
+        >
+          Σχετικά
+        </button>
+        <button 
+          (click)="scrollToSection(servicesSection)" 
+          class="block w-full text-left px-3 py-2 text-gray-700 hover:bg-indigo-50 rounded-lg"
+        >
+          Υπηρεσίες
+        </button>
+        <button 
+          (click)="scrollToSection(portfolioSection)" 
+          class="block w-full text-left px-3 py-2 text-gray-700 hover:bg-indigo-50 rounded-lg"
+        >
+          Portfolio
+        </button>
+        <button 
+          (click)="scrollToSection(contactSection)" 
+          class="block w-full text-left px-3 py-2 text-gray-700 hover:bg-indigo-50 rounded-lg"
+        >
+          Επικοινωνία
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section #heroSection class="relative h-screen">
+    <!-- Background Slider -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div *ngFor="let slide of slides; let i = index"
+        class="absolute inset-0 transition-opacity duration-1000"
+        [class.opacity-100]="currentSlide === i"
+        [class.opacity-0]="currentSlide !== i"
+      >
+        <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50 z-10"></div>
+        <img
+          [src]="slide"
+          [alt]="'Slide ' + (i + 1)"
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-20 h-full flex items-center">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div class="md:max-w-2xl lg:max-w-3xl">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            Γεια σου! Είμαι ο <span class="text-indigo-400">Παναγιώτης Χολιασμένος</span>
+          </h1>
+          <p class="text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed">
+            Web Designer & Digital Marketer με πάθος για τη δημιουργία εντυπωσιακών ψηφιακών εμπειριών.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button (click)="scrollToSection(aboutSection)" class="btn-primary">
+              Περισσότερα για εμένα
+              <i-lucide name="arrow-right" class="ml-2 h-5 w-5"></i-lucide>
+            </button>
+            <button (click)="scrollToSection(portfolioSection)" class="btn-secondary">
+              Δες το Portfolio
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slider Navigation Dots -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-2">
+      <button
+        *ngFor="let slide of slides; let i = index"
+        (click)="currentSlide = i"
+        [class.w-4]="currentSlide === i"
+        [class.bg-white]="currentSlide === i"
+        [class.bg-white/50]="currentSlide !== i"
+        class="h-2 rounded-full transition-all"
+        [attr.aria-label]="'Go to slide ' + (i + 1)"
+      ></button>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section #aboutSection class="py-24 px-4 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="section-title">Σχετικά με Εμένα</h2>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Είμαι επαγγελματίας Web Designer και Digital Marketer με εμπειρία πάνω από 10 χρόνια στον χώρο της δημιουργίας ιστοσελίδων και e-shops, του branding, αλλά και της online προώθησης επιχειρήσεων.
+          </p>
+          <p class="text-gray-600 mb-8 leading-relaxed">
+            Η φιλοσοφία μου είναι απλή: δημιουργώ ψηφιακές εμπειρίες που συνδυάζουν την αισθητική με τη λειτουργικότητα, βοηθώντας τις επιχειρήσεις να αναπτυχθούν στο ψηφιακό περιβάλλον.
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-start gap-4">
+              <div class="p-2 bg-indigo-100 rounded-lg">
+                <i-lucide name="user" class="w-6 h-6 text-indigo-600"></i-lucide>
+              </div>
+              <div>
+                <h3 class="font-semibold mb-1">Επαγγελματική Εμπειρία</h3>
+                <p class="text-gray-600">Ξεκίνησα την καριέρα μου ως ελεύθερος επαγγελματίας το 2004</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="p-2 bg-indigo-100 rounded-lg">
+                <i-lucide name="briefcase" class="w-6 h-6 text-indigo-600"></i-lucide>
+              </div>
+              <div>
+                <h3 class="font-semibold mb-1">Πολυετής Εξειδίκευση</h3>
+                <p class="text-gray-600">Εμπειρία σε διάφορους κλάδους και τεχνολογίες</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="p-2 bg-indigo-100 rounded-lg">
+                <i-lucide name="file-text" class="w-6 h-6 text-indigo-600"></i-lucide>
+              </div>
+              <div>
+                <h3 class="font-semibold mb-1">Digital Marketing Expert</h3>
+                <p class="text-gray-600">Πιστοποιημένος σε Google Ads, Meta Ads και SEO</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="relative">
+          <img 
+            src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80" 
+            alt="Professional workspace"
+            class="rounded-lg shadow-xl"
+          />
+          <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-lg shadow-lg">
+            <div class="text-4xl font-bold text-indigo-600 mb-2">10+</div>
+            <div class="text-gray-600">Χρόνια Εμπειρίας</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section #servicesSection class="py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="section-title">Υπηρεσίες</h2>
+        <p class="section-subtitle">
+          Προσφέρω ολοκληρωμένες λύσεις για την ψηφιακή παρουσία της επιχείρησής σας
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <app-service-card
+          *ngFor="let service of services"
+          [service]="service"
+        ></app-service-card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section #portfolioSection class="py-24 px-4 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="section-title">Πρόσφατα Έργα</h2>
+        <p class="section-subtitle">
+          Μια επιλογή από τα πιο πρόσφατα και επιτυχημένα projects
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <app-portfolio-item
+          *ngFor="let item of portfolioItems"
+          [item]="item"
+        ></app-portfolio-item>
+      </div>
+      <div class="text-center mt-12">
+        <button class="btn-secondary">
+          Περισσότερα Έργα
+          <i-lucide name="external-link" class="ml-2 h-4 w-4"></i-lucide>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <app-testimonials-section></app-testimonials-section>
+
+  <!-- Contact Section -->
+  <section #contactSection class="py-24 px-4 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="section-title">Ας Συνεργαστούμε</h2>
+        <p class="section-subtitle">
+          Είμαι εδώ για να βοηθήσω την επιχείρησή σας να αναπτυχθεί ψηφιακά.
+          Επικοινωνήστε μαζί μου για να συζητήσουμε το project σας.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="space-y-8">
+          <div class="bg-white p-8 rounded-lg shadow-md">
+            <h3 class="text-xl font-semibold mb-6">Στοιχεία Επικοινωνίας</h3>
+            <div class="space-y-6">
+              <div class="flex items-center space-x-4">
+                <div class="p-3 bg-indigo-100 rounded-full">
+                  <i-lucide name="phone" class="w-5 h-5 text-indigo-600"></i-lucide>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-900">Τηλέφωνο</h4>
+                  <p class="text-gray-600">6977086945</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <div class="p-3 bg-indigo-100 rounded-full">
+                  <i-lucide name="mail" class="w-5 h-5 text-indigo-600"></i-lucide>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-900">Email</h4>
+                  <p class="text-gray-600">choliasmenos.panos@gmail.com</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <div class="p-3 bg-indigo-100 rounded-full">
+                  <i-lucide name="map-pin" class="w-5 h-5 text-indigo-600"></i-lucide>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-900">Online Meetings</h4>
+                  <p class="text-gray-600">Διαθέσιμος για online συναντήσεις</p>
+                </div>
+              </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-200">
+              <h4 class="font-medium text-gray-900 mb-4">Ακολουθήστε με</h4>
+              <div class="flex space-x-4">
+                <a href="#" class="p-3 bg-gray-100 rounded-full hover:bg-indigo-100 transition-colors">
+                  <i-lucide name="instagram" class="w-5 h-5 text-gray-600 hover:text-indigo-600"></i-lucide>
+                </a>
+                <a href="#" class="p-3 bg-gray-100 rounded-full hover:bg-indigo-100 transition-colors">
+                  <i-lucide name="linkedin" class="w-5 h-5 text-gray-600 hover:text-indigo-600"></i-lucide>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <app-contact-form></app-contact-form>
+      </div>
+    </div>
+  </section>
+
+  <app-footer></app-footer>
+</div>
