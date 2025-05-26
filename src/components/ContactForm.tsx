@@ -22,12 +22,12 @@ export const ContactForm: React.FC = () => {
     
     setIsSubmitting(true);
     
-    emailjs.sendForm(
-      'service_dp6q9iv', 
-      'template_g0v8zbs', 
-      formRef.current,
-      '5xHzaRnQcqSqDQB-T'
-    )
+emailjs.sendForm(
+  import.meta.env.VITE_EMAILJS_SERVICE_ID!,
+  import.meta.env.VITE_EMAILJS_TEMPLATE_ID!,
+  formRef.current,
+  import.meta.env.VITE_EMAILJS_PUBLIC_KEY!
+)
       .then((result) => {
         console.log('Email sent successfully:', result.text);
         toast.success('Το μήνυμά σας στάλθηκε με επιτυχία!');
